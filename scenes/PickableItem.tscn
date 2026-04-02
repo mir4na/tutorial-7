@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://pickable_item_tscn"]
+
+[ext_resource type="Script" path="res://scripts/PickableItem.gd" id="1_pick"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_pick"]
+albedo_color = Color(1, 0.85, 0.1, 1)
+emission_enabled = true
+emission = Color(1, 0.7, 0, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="SphereMesh" id="Mesh_pick"]
+material = SubResource("Mat_pick")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="SphereShape3D" id="Shape_pick"]
+radius = 0.3
+
+[node name="PickableItem" type="StaticBody3D"]
+script = ExtResource("1_pick")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("Mesh_pick")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("Shape_pick")

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://terminal_tscn"]
+
+[ext_resource type="Script" path="res://scripts/Terminal.gd" id="1_term"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_term"]
+albedo_color = Color(0.1, 0.8, 0.9, 1)
+emission_enabled = true
+emission = Color(0, 0.8, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="BoxMesh" id="Mesh_term"]
+material = SubResource("Mat_term")
+size = Vector3(0.8, 1.2, 0.3)
+
+[sub_resource type="BoxShape3D" id="Shape_term"]
+size = Vector3(0.8, 1.2, 0.3)
+
+[node name="Terminal" type="StaticBody3D"]
+script = ExtResource("1_term")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("Mesh_term")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("Shape_term")
