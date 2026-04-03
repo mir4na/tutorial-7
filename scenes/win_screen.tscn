@@ -1,3 +1,5 @@
+[gd_scene format=3 uid="uid://winscreen_tscn"]
+
 [ext_resource type="Script" path="res://scripts/win_screen.gd" id="1_win1"]
 
 [node name="WinScreen" type="Control"]
@@ -52,4 +54,3 @@ theme_override_font_sizes/font_size = 24
 text = "Next Level"
 
 [connection signal="pressed" from="VBoxContainer/NextLevelButton" to="." method="_on_next_level_pressed"]
-

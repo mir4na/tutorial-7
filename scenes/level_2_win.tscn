@@ -1,3 +1,5 @@
+[gd_scene format=3 uid="uid://level2win_tscn"]
+
 [ext_resource type="Script" path="res://scripts/level_2_win.gd" id="1_win2"]
 
 [node name="Level2Win" type="Control"]
@@ -53,4 +55,3 @@ theme_override_font_sizes/font_size = 24
 text = "Main Menu"
 
 [connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_pressed"]
-
