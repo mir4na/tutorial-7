@@ -24,4 +24,4 @@ func _open_door():
 	is_open = true
 	prompt_text = ""
 	var tween = create_tween()
-	tween.tween_property(self, "position", position + Vector3(0, 100.0, 0), 2.5)
+	tween.tween_property(self, "position", position + Vector3(0, 25.0, 0), 2.5)

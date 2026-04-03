@@ -4,21 +4,22 @@
 [ext_resource type="PackedScene" uid="uid://dux70gsmw7ob" path="res://scenes/world_1.tscn" id="2_rus8k"]
 [ext_resource type="PackedScene" path="res://scenes/AreaTrigger.tscn" id="3_trigger"]
 [ext_resource type="PackedScene" path="res://scenes/hud_l1.tscn" id="4_hudl1"]
-[ext_resource type="PackedScene" path="res://scenes/Door.tscn" id="5_door"]
+[ext_resource type="PackedScene" uid="uid://b7cga8cfp1h0u" path="res://scenes/Door.tscn" id="5_door"]
 [ext_resource type="PackedScene" path="res://scenes/PickableItem.tscn" id="6_key"]
+[ext_resource type="PackedScene" path="res://scenes/WinBeacon.tscn" id="7_beacon"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fcfvj"]
 
 [node name="Level1" type="Node3D" unique_id=1336815123]
 
-[node name="Player" parent="." unique_id=1349151614 instance=ExtResource("1_bswci")]
+[node name="Player" parent="." unique_id=1349151614 groups=["player"] instance=ExtResource("1_bswci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.31002808, 0)
 
 [node name="World1" parent="." unique_id=1292048803 instance=ExtResource("2_rus8k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0176723, 4.7683716e-07, 0.003484726)
 
 [node name="BlastDoor" parent="." unique_id=333394209 instance=ExtResource("5_door")]
-transform = Transform3D(1.25, 0, 0, 0, 3, 0, 0, 0, 1, 0, -2.012146, -12.657097)
+transform = Transform3D(1, 0, 0, 0, 1.1, 0, 0, 0, 1, -0.05091858, -0.7454834, -12.585136)
 open_on_key = true
 required_key = "Key Card"
 
@@ -37,8 +38,11 @@ transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 5, 0, -17.867432, -23.637589)
 sceneName = "lose_screen_l1"
 
 [node name="WinTrigger" parent="." unique_id=616816409 instance=ExtResource("3_trigger")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.22869873, 2, -48.751343)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.62731934, -3.078003, -46.020874)
 sceneName = "win_screen"
+
+[node name="WinBeacon" parent="." unique_id=1019786835 instance=ExtResource("7_beacon")]
+transform = Transform3D(-0.9998858, -0.015113883, 0, 0.015113883, -0.9998858, 0, 0, 0, 1, 0.054347992, 4.4661865, -41.882935)
 
 [node name="HUD_L1" parent="." unique_id=1186386761 instance=ExtResource("4_hudl1")]
 

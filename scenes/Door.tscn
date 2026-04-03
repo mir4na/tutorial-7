@@ -1,22 +1,22 @@
-[gd_scene format=3 uid="uid://door_tscn"]
+[gd_scene format=3 uid="uid://b7cga8cfp1h0u"]
 
-[ext_resource type="Script" path="res://scripts/Door.gd" id="1_door"]
+[ext_resource type="Script" uid="uid://b5pcetai3ksic" path="res://scripts/Door.gd" id="1_door"]
 
 [sub_resource type="StandardMaterial3D" id="Mat_door"]
-albedo_color = Color(0.3, 0.3, 0.8, 1)
+albedo_color = Color(0.6790591, 0.17708284, 0.16452572, 1)
 
 [sub_resource type="BoxMesh" id="Mesh_door"]
 material = SubResource("Mat_door")
-size = Vector3(5.0, 8.0, 0.2)
+size = Vector3(5, 8, 0.2)
 
 [sub_resource type="BoxShape3D" id="Shape_door"]
-size = Vector3(5.0, 8.0, 0.2)
+size = Vector3(5, 8, 0.2)
 
-[node name="Door" type="StaticBody3D"]
+[node name="Door" type="StaticBody3D" unique_id=354118344]
 script = ExtResource("1_door")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=800639650]
 mesh = SubResource("Mesh_door")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1331499420]
 shape = SubResource("Shape_door")

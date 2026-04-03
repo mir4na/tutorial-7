@@ -22,6 +22,7 @@ signal movement_state_changed(state: String)
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	add_to_group("player")
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
