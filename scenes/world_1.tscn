@@ -1,13 +1,137 @@
 [gd_scene format=3 uid="uid://dux70gsmw7ob"]
 
-[ext_resource type="PackedScene" uid="uid://cx5pdthn4458d" path="res://scenes/obj_lamp.tscn" id="1_aq7y2"]
+[ext_resource type="PackedScene" uid="uid://cx5pdthn4458d" path="res://scenes/obj_lamp.tscn" id="1_lamp"]
+[ext_resource type="PackedScene" path="res://scenes/obj_table.tscn" id="2_table"]
+[ext_resource type="PackedScene" path="res://scenes/obj_shelf.tscn" id="3_shelf"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_Ceiling"]
+albedo_color = Color(0.8, 0.8, 0.8, 1)
+
+[sub_resource type="StandardMaterial3D" id="Mat_BackroomsWall"]
+albedo_color = Color(0.85, 0.82, 0.45, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="Mat_BackroomsCarpet"]
+albedo_color = Color(0.6, 0.5, 0.35, 1)
 
 [node name="World1" type="Node3D" unique_id=1292048803]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1479527399]
-use_collision = true
-flip_faces = true
-size = Vector3(15, 10, 55)
+[node name="MainLighting" type="OmniLight3D" parent="." unique_id=430284268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+light_color = Color(1, 1, 0.8, 1)
+shadow_enabled = true
+omni_range = 30.0
 
-[node name="ObjLamp" parent="." unique_id=1157265043 instance=ExtResource("1_aq7y2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -5, 0)
+[node name="MainLighting2" type="OmniLight3D" parent="." unique_id=1944769035]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -38.22312)
+light_color = Color(1, 1, 0.8, 1)
+shadow_enabled = true
+omni_range = 30.0
+
+[node name="MainLighting3" type="OmniLight3D" parent="." unique_id=835643273]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.523808, 9, 9.296996)
+light_color = Color(1, 1, 0.8, 1)
+shadow_enabled = true
+omni_range = 30.0
+
+[node name="RoomCombiner" type="CSGCombiner3D" parent="." unique_id=18853199]
+use_collision = true
+
+[node name="UniverseBase" type="CSGBox3D" parent="RoomCombiner" unique_id=1504407571]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06549549, -4.7683716e-07, -17.865475)
+flip_faces = true
+size = Vector3(60, 20, 80)
+material = SubResource("Mat_Ceiling")
+
+[node name="Room1Air" type="CSGBox3D" parent="RoomCombiner" unique_id=1901001163]
+operation = 2
+size = Vector3(25, 10, 25)
+material = SubResource("Mat_BackroomsWall")
+
+[node name="Room1Floor" type="CSGBox3D" parent="RoomCombiner" unique_id=1143289172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.95, 0)
+size = Vector3(25, 0.1, 25)
+material = SubResource("Mat_BackroomsCarpet")
+
+[node name="MazeWall1" type="CSGBox3D" parent="RoomCombiner" unique_id=819691160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -5)
+size = Vector3(1, 10, 15)
+material = SubResource("Mat_BackroomsWall")
+
+[node name="MazeWall2" type="CSGBox3D" parent="RoomCombiner" unique_id=1724652194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5)
+size = Vector3(15, 10, 1)
+material = SubResource("Mat_BackroomsWall")
+
+[node name="MazeWall3" type="CSGBox3D" parent="RoomCombiner" unique_id=215951172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
+size = Vector3(5, 10, 1)
+material = SubResource("Mat_BackroomsWall")
+
+[node name="Room2Air" type="CSGBox3D" parent="RoomCombiner" unique_id=1074461395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -38)
+operation = 2
+size = Vector3(25, 10, 25)
+material = SubResource("Mat_BackroomsWall")
+
+[node name="Room2Floor" type="CSGBox3D" parent="RoomCombiner" unique_id=1924760618]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.95, -38)
+size = Vector3(25, 0.1, 25)
+material = SubResource("Mat_BackroomsCarpet")
+
+[node name="HoleAir" type="CSGBox3D" parent="RoomCombiner" unique_id=1228722385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7564392, -4.5, -18.985046)
+operation = 2
+size = Vector3(28.680603, 12, 12.914429)
+
+[node name="PathwayAir" type="CSGBox3D" parent="RoomCombiner" unique_id=786689496]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.74224854, -19.133636)
+operation = 2
+size = Vector3(5, 8.366089, 13.390076)
+material = SubResource("Mat_BackroomsWall")
+
+[node name="SteppingStone" type="CSGBox3D" parent="RoomCombiner" unique_id=559734755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.9944463, -19)
+size = Vector3(5, 3, 5)
+material = SubResource("Mat_BackroomsWall")
+
+[node name="LightingRoom2" type="OmniLight3D" parent="." unique_id=145396073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -38)
+light_color = Color(1, 1, 0.8, 1)
+shadow_enabled = true
+omni_range = 30.0
+
+[node name="Furniture" type="Node3D" parent="." unique_id=229101585]
+
+[node name="Table1" parent="Furniture" unique_id=965154165 instance=ExtResource("2_table")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -9, -4.9, 0)
+
+[node name="Lamp1" parent="Furniture/Table1" unique_id=794835785 instance=ExtResource("1_lamp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.95, 0)
+
+[node name="Table2" parent="Furniture" unique_id=1311710894 instance=ExtResource("2_table")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -4.9, 5)
+
+[node name="Lamp2" parent="Furniture/Table2" unique_id=784663642 instance=ExtResource("1_lamp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.95, -0.2)
+
+[node name="Table3" parent="Furniture" unique_id=500362228 instance=ExtResource("2_table")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 10, -4.9, -35)
+
+[node name="Lamp3" parent="Furniture/Table3" unique_id=1529545714 instance=ExtResource("1_lamp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
+
+[node name="Shelf1" parent="Furniture" unique_id=103581622 instance=ExtResource("3_shelf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -4.9, -12.110601)
+
+[node name="Shelf2" parent="Furniture" unique_id=1251227108 instance=ExtResource("3_shelf")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 12.149972, -4.9, -4)
+
+[node name="Shelf3" parent="Furniture" unique_id=379983635 instance=ExtResource("3_shelf")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -4.9, -50.100643)
+
+[node name="Table4" parent="Furniture" unique_id=434031095 instance=ExtResource("2_table")]
+transform = Transform3D(0.007661939, 0, 0.9999707, 0, 1, 0, -0.9999707, 0, 0.007661939, -9.755356, -4.9, 10.277243)
+
+[node name="Lamp2" parent="Furniture/Table4" unique_id=969619113 instance=ExtResource("1_lamp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.95, -0.2)

@@ -47,4 +47,4 @@ func _physics_process(delta):
 
 func _catch_player():
 	active = false
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/lose_screen_l2.tscn")

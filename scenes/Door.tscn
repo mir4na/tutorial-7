@@ -7,10 +7,10 @@ albedo_color = Color(0.3, 0.3, 0.8, 1)
 
 [sub_resource type="BoxMesh" id="Mesh_door"]
 material = SubResource("Mat_door")
-size = Vector3(4.0, 3.5, 0.3)
+size = Vector3(5.0, 8.0, 0.2)
 
 [sub_resource type="BoxShape3D" id="Shape_door"]
-size = Vector3(4.0, 3.5, 0.3)
+size = Vector3(5.0, 8.0, 0.2)
 
 [node name="Door" type="StaticBody3D"]
 script = ExtResource("1_door")

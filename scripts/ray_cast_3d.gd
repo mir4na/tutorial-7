@@ -1,13 +1,18 @@
 extends RayCast3D
 
-var current_collider
-
-func _ready():
-	pass
-
 func _process(delta):
-	var collider = get_collider()
-
-	if is_colliding() and collider is Interactable:
-		if Input.is_action_just_pressed("interact"):
-			collider.interact()
+	var hit = false
+	if is_colliding():
+		var obj = get_collider()
+		if obj is Interactable:
+			hit = true
+			var txt = "Press E to interact"
+			if "prompt_text" in obj:
+				txt = obj.prompt_text
+			LevelManager.show_prompt.emit(txt)
+			
+			if Input.is_action_just_pressed("interact"):
+				obj.interact()
+				
+	if not hit:
+		LevelManager.hide_prompt.emit()

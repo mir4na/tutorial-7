@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cgjk2qmuxnyra" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://b8qagj642oax7" path="res://scripts/ray_cast_3d.gd" id="2_g2els"]
+[ext_resource type="PackedScene" path="res://scenes/PlayerHUD.tscn" id="3_phud"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
 
@@ -9,7 +10,6 @@
 
 [node name="Player" type="CharacterBody3D" unique_id=1349151614]
 script = ExtResource("1_3vyb7")
-groups = ["player"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=651264688]
 mesh = SubResource("CapsuleMesh_u8vuu")
@@ -24,5 +24,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5007334, 0)
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=2078913221]
 
 [node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D" unique_id=1041667126]
-transform = Transform3D(1.5, 0, 0, 0, 0.00924141, -1.4999716, 0, 1.4999716, 0.00924141, 0, 0, -0.1292361)
+transform = Transform3D(2.5, 0, 0, 0, 0.0154022295, -2.4999526, 0, 2.4999526, 0.0154022295, 0, 0, -0.1292361)
 script = ExtResource("2_g2els")
+
+[node name="PlayerHUD" parent="." unique_id=760357558 instance=ExtResource("3_phud")]

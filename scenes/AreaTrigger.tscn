@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://areatrigger_tscn"]
+
+[ext_resource type="Script" path="res://scripts/AreaTrigger.gd" id="1_trigger"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_trigger"]
+radius = 2.0
+
+[node name="AreaTrigger" type="Area3D"]
+script = ExtResource("1_trigger")
+sceneName = "Level 1"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_trigger")

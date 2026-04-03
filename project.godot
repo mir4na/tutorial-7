@@ -15,14 +15,21 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Basic 3D Game Mechanics"
-run/main_scene="uid://65h4c0mrp6k7"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.6")
 config/icon="res://icon.png"
+display/window/size/mode=4
 
 [autoload]
 
 InventoryManager="*res://scripts/InventoryManager.gd"
 LevelManager="*res://scripts/LevelManager.gd"
+
+[display]
+
+window/size/mode=4
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [input]
 

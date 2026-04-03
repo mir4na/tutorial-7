@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://shelf_tscn"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_Wood_Dark"]
+albedo_color = Color(0.3, 0.18, 0.1, 1)
+
+[node name="ObjShelf" type="Node3D"]
+
+[node name="shelf" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Back" type="CSGBox3D" parent="shelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, -0.35)
+size = Vector3(1.5, 2.5, 0.05)
+material = SubResource("Mat_Wood_Dark")
+
+[node name="SideL" type="CSGBox3D" parent="shelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.725, 1.25, 0)
+size = Vector3(0.05, 2.5, 0.7)
+material = SubResource("Mat_Wood_Dark")
+
+[node name="SideR" type="CSGBox3D" parent="shelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.725, 1.25, 0)
+size = Vector3(0.05, 2.5, 0.7)
+material = SubResource("Mat_Wood_Dark")
+
+[node name="Shelf1" type="CSGBox3D" parent="shelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+size = Vector3(1.4, 0.05, 0.65)
+material = SubResource("Mat_Wood_Dark")
+
+[node name="Shelf2" type="CSGBox3D" parent="shelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+size = Vector3(1.4, 0.05, 0.65)
+material = SubResource("Mat_Wood_Dark")
+
+[node name="Shelf3" type="CSGBox3D" parent="shelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+size = Vector3(1.4, 0.05, 0.65)
+material = SubResource("Mat_Wood_Dark")
+
+[node name="Top" type="CSGBox3D" parent="shelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.475, 0)
+size = Vector3(1.5, 0.05, 0.7)
+material = SubResource("Mat_Wood_Dark")

@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://table_tscn"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_Wood"]
+albedo_color = Color(0.4, 0.25, 0.15, 1)
+roughness = 0.8
+
+[node name="ObjTable" type="Node3D"]
+
+[node name="table" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Top" type="CSGBox3D" parent="table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+size = Vector3(2.0, 0.1, 1.2)
+material = SubResource("Mat_Wood")
+
+[node name="Leg1" type="CSGBox3D" parent="table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0.45, -0.5)
+size = Vector3(0.1, 0.9, 0.1)
+material = SubResource("Mat_Wood")
+
+[node name="Leg2" type="CSGBox3D" parent="table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0.45, -0.5)
+size = Vector3(0.1, 0.9, 0.1)
+material = SubResource("Mat_Wood")
+
+[node name="Leg3" type="CSGBox3D" parent="table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0.45, 0.5)
+size = Vector3(0.1, 0.9, 0.1)
+material = SubResource("Mat_Wood")
+
+[node name="Leg4" type="CSGBox3D" parent="table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0.45, 0.5)
+size = Vector3(0.1, 0.9, 0.1)
+material = SubResource("Mat_Wood")

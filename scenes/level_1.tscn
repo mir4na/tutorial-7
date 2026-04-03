@@ -2,10 +2,50 @@
 
 [ext_resource type="PackedScene" uid="uid://bwxfnqk8c31fs" path="res://scenes/player.tscn" id="1_bswci"]
 [ext_resource type="PackedScene" uid="uid://dux70gsmw7ob" path="res://scenes/world_1.tscn" id="2_rus8k"]
+[ext_resource type="PackedScene" path="res://scenes/AreaTrigger.tscn" id="3_trigger"]
+[ext_resource type="PackedScene" path="res://scenes/hud_l1.tscn" id="4_hudl1"]
+[ext_resource type="PackedScene" path="res://scenes/Door.tscn" id="5_door"]
+[ext_resource type="PackedScene" path="res://scenes/PickableItem.tscn" id="6_key"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fcfvj"]
 
 [node name="Level1" type="Node3D" unique_id=1336815123]
 
 [node name="Player" parent="." unique_id=1349151614 instance=ExtResource("1_bswci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.31002808, 0)
 
 [node name="World1" parent="." unique_id=1292048803 instance=ExtResource("2_rus8k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0176723, 4.7683716e-07, 0.003484726)
+
+[node name="BlastDoor" parent="." unique_id=333394209 instance=ExtResource("5_door")]
+transform = Transform3D(1.25, 0, 0, 0, 3, 0, 0, 0, 1, 0, -2.012146, -12.657097)
+open_on_key = true
+required_key = "Key Card"
+
+[node name="KeyCard" parent="." unique_id=1956041126 instance=ExtResource("6_key")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.27005, -4.6914063, 9.706238)
+physics_material_override = SubResource("PhysicsMaterial_fcfvj")
+item_name = "Key Card"
+is_key = true
+
+[node name="FallTrigger" parent="." unique_id=167633269 instance=ExtResource("3_trigger")]
+transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 5, 0, -17.867432, -13.911927)
+sceneName = "lose_screen_l1"
+
+[node name="FallTrigger2" parent="." unique_id=1918075871 instance=ExtResource("3_trigger")]
+transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 5, 0, -17.867432, -23.637589)
+sceneName = "lose_screen_l1"
+
+[node name="WinTrigger" parent="." unique_id=616816409 instance=ExtResource("3_trigger")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.22869873, 2, -48.751343)
+sceneName = "win_screen"
+
+[node name="HUD_L1" parent="." unique_id=1186386761 instance=ExtResource("4_hudl1")]
+
+[node name="FallTrigger3" parent="." unique_id=281730468 instance=ExtResource("3_trigger")]
+transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 5, -8.450668, -17.867432, -18.677006)
+sceneName = "lose_screen_l1"
+
+[node name="FallTrigger4" parent="." unique_id=920373426 instance=ExtResource("3_trigger")]
+transform = Transform3D(5, 0, 0, 0, 0.5, 0, 0, 0, 5, 7.529251, -17.867432, -18.677006)
+sceneName = "lose_screen_l1"

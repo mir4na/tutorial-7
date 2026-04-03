@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
-@export var speed: float = 10.0
-@export var sprint_speed: float = 18.0
+@export var speed: float = 7.5
+@export var sprint_speed: float = 10.0
 @export var crouch_speed: float = 4.0
 @export var acceleration: float = 5.0
 @export var gravity: float = 9.8
@@ -59,6 +59,8 @@ func _physics_process(delta):
 	elif not wants_crouch and is_crouching:
 		is_crouching = false
 		collision_shape.shape.height = normal_height * 2.0
+		# Shift player up so the capsule expansion doesn't clip into the floor
+		position.y += (normal_height * 2.0 - crouch_height) / 2.0
 		head.position.y = 0.5
 		emit_signal("movement_state_changed", "WALK")
 
@@ -88,3 +90,33 @@ func _physics_process(delta):
 		velocity.y = jump_power
 
 	move_and_slide()
+
+	# Shooting Logic
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and LevelManager.has_gun:
+		# Use a rudimentary cooldown trick by requiring just_pressed, wait, is_mouse_button_pressed does continuous fire.
+		# Let's use InputEvent in _input for shooting or just Input.is_action_just_pressed if we mapped it.
+		# We didn't map "shoot", so let's handle it manually or just use a flag.
+		pass
+
+func _unhandled_input(event):
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_1: InventoryManager.select_slot(0)
+		elif event.keycode == KEY_2: InventoryManager.select_slot(1)
+		elif event.keycode == KEY_3: InventoryManager.select_slot(2)
+
+	if event is InputEventMouseButton:
+		var has_g = InventoryManager.slots[InventoryManager.selected_slot] == "Gun"
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and has_g:
+			_shoot()
+
+func _shoot():
+	var space_state = get_world_3d().direct_space_state
+	# Cast from camera center straight forward
+	var from = camera.global_position
+	var to = from - camera.global_transform.basis.z * 100.0
+	var query = PhysicsRayQueryParameters3D.create(from, to)
+	var result = space_state.intersect_ray(query)
+	
+	if result and result.collider.is_in_group("enemy"):
+		if result.collider.has_method("die"):
+			result.collider.die()

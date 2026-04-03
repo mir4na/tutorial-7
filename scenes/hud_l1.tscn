@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://hud_tscn"]
+[gd_scene format=3 uid="uid://hudl1_tscn"]
 
-[ext_resource type="Script" path="res://scripts/HUD.gd" id="1_hud"]
+[ext_resource type="Script" path="res://scripts/hud_l1.gd" id="1_hud1"]
 
 [sub_resource type="StyleBoxFlat" id="Style_panel"]
 bg_color = Color(0, 0, 0, 0.65)
@@ -13,8 +13,8 @@ content_margin_right = 12.0
 content_margin_top = 8.0
 content_margin_bottom = 8.0
 
-[node name="HUD" type="CanvasLayer"]
-script = ExtResource("1_hud")
+[node name="HUD_L1" type="CanvasLayer"]
+script = ExtResource("1_hud1")
 
 [node name="Panel" type="PanelContainer" parent="."]
 anchors_preset = 0
@@ -25,20 +25,20 @@ anchor_bottom = 0.0
 offset_left = 12.0
 offset_top = 12.0
 offset_right = 260.0
-offset_bottom = 230.0
+offset_bottom = 220.0
 theme_override_styles/panel = SubResource("Style_panel")
 
 [node name="VBox" type="VBoxContainer" parent="Panel"]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="LevelTitle" type="Label" parent="Panel/VBox"]
-text = "Level 2: The Hunt"
-theme_override_colors/font_color = Color(1, 0.2, 0.2, 1)
+[node name="TitleLabel" type="Label" parent="Panel/VBox"]
+text = "Level 1: The Backrooms"
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
 theme_override_font_sizes/font_size = 18
 
-[node name="TitleLabel" type="Label" parent="Panel/VBox"]
-text = "Objective: Find a weapon."
+[node name="ObjLabel" type="Label" parent="Panel/VBox"]
+text = "Objective: Find the Key Card to unlock the blast door, then cross the chasm."
 autowrap_mode = 2
 
 [node name="Divider" type="HSeparator" parent="Panel/VBox"]
@@ -53,7 +53,6 @@ theme_override_colors/font_color = Color(0.6, 1, 0.6, 1)
 text = "WASD: Move
 Shift: Sprint
 Ctrl: Crouch
-E: Interact
-L-Click: Shoot"
+E: Interact"
 theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
 theme_override_font_sizes/font_size = 14

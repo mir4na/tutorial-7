@@ -8,13 +8,12 @@ emission_enabled = true
 emission = Color(1, 0.7, 0, 1)
 emission_energy_multiplier = 2.0
 
-[sub_resource type="SphereMesh" id="Mesh_pick"]
+[sub_resource type="BoxMesh" id="Mesh_pick"]
 material = SubResource("Mat_pick")
-radius = 0.25
-height = 0.5
+size = Vector3(0.4, 0.1, 0.3)
 
-[sub_resource type="SphereShape3D" id="Shape_pick"]
-radius = 0.3
+[sub_resource type="BoxShape3D" id="Shape_pick"]
+size = Vector3(0.4, 0.1, 0.3)
 
 [node name="PickableItem" type="StaticBody3D"]
 script = ExtResource("1_pick")
