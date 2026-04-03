@@ -2,69 +2,82 @@ extends CharacterBody3D
 
 @export var move_speed: float = 3.5
 @export var chase_speed: float = 5.5
-@export var attack_range: float = 15.0
-@export var chase_range: float = 15.0
-@export var leash_range: float = 20.0
+@export var attack_range: float = 12.0
+@export var shoot_distance: float = 8.0
+@export var chase_range: float = 12.0
+@export var leash_range: float = 18.0
 @export var attack_cooldown: float = 4.0
 
-@onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var roam_timer: Timer = $RoamTimer
 @onready var attack_timer: Timer = $AttackTimer
 
 var player: Node3D = null
 var phase: int = 0
+var roam_direction: Vector3 = Vector3.ZERO
 var bullet_scene = preload("res://scenes/EnemyBullet.tscn")
+var gravity: float = 9.8
 
 func _ready():
 	add_to_group("enemy")
 	player = get_tree().get_first_node_in_group("player")
-	randomize()
-	_pick_random_roam_target()
-	roam_timer.start(randf_range(3.0, 6.0))
+	_pick_random_direction()
+	roam_timer.start(randf_range(2.5, 5.0))
 
 func _physics_process(delta):
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+
 	if player == null:
+		move_and_slide()
 		return
 
 	var dist = global_position.distance_to(player.global_position)
 
 	if dist <= chase_range:
-		phase = 1
-		nav_agent.target_position = player.global_position
-		if attack_timer.is_stopped():
-			attack_timer.start(attack_cooldown)
+		if phase == 0:
+			phase = 1
+			if attack_timer.is_stopped():
+				attack_timer.start(attack_cooldown)
 	elif dist > leash_range and phase == 1:
 		phase = 0
 		attack_timer.stop()
-		_pick_random_roam_target()
+		_pick_random_direction()
 
-	var current_speed = chase_speed if phase == 1 else move_speed
-
-	if not nav_agent.is_navigation_finished():
-		var next = nav_agent.get_next_path_position()
-		var dir = global_position.direction_to(next)
-		dir.y = 0.0
-		velocity = dir * current_speed
+	if phase == 0:
+		velocity.x = roam_direction.x * move_speed
+		velocity.z = roam_direction.z * move_speed
 	else:
-		velocity = Vector3.ZERO
+		var dir = (player.global_position - global_position)
+		dir.y = 0.0
+		if dist > shoot_distance:
+			if dir.length() > 0.1:
+				dir = dir.normalized()
+			velocity.x = dir.x * chase_speed
+			velocity.z = dir.z * chase_speed
+		else:
+			velocity.x = 0.0
+			velocity.z = 0.0
 
-	move_and_slide()
-
-	if phase == 1:
-		var look_dir = (player.global_position - global_position)
-		look_dir.y = 0.0
+		var look_dir = Vector3(player.global_position.x - global_position.x, 0, player.global_position.z - global_position.z)
 		if look_dir.length() > 0.1:
 			look_at(global_position + look_dir, Vector3.UP)
 
-func _pick_random_roam_target():
-	var rx = randf_range(-12, 12)
-	var rz = randf_range(-12, 12)
-	nav_agent.target_position = Vector3(rx, global_position.y, rz)
+	move_and_slide()
+
+	if phase == 0 and was_colliding():
+		roam_direction = -roam_direction.rotated(Vector3.UP, randf_range(0.5, 1.5))
+
+func was_colliding() -> bool:
+	return get_slide_collision_count() > 0
+
+func _pick_random_direction():
+	var angle = randf_range(0, TAU)
+	roam_direction = Vector3(cos(angle), 0, sin(angle))
 
 func _on_roam_timer_timeout():
 	if phase == 0:
-		_pick_random_roam_target()
-	roam_timer.start(randf_range(3.0, 6.0))
+		_pick_random_direction()
+	roam_timer.start(randf_range(2.5, 5.0))
 
 func _on_attack_timer_timeout():
 	if player == null:
@@ -72,6 +85,7 @@ func _on_attack_timer_timeout():
 	var dist = global_position.distance_to(player.global_position)
 	if dist <= attack_range:
 		_fire_at_player()
+	if phase == 1:
 		attack_timer.start(attack_cooldown)
 
 func _fire_at_player():

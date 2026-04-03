@@ -16,12 +16,12 @@ func _ready():
 
 func _refresh():
 	if not LevelManager.key_collected_l2:
-		obj_label.text = "1. Find the Key Card\n2. Unlock the Gun Room\n3. Kill all enemies (0/3)"
+		obj_label.text = "1. Find the Key Card\n2. Open the door, grab the Gun\n3. Shoot all enemies (0/3)"
 	elif not LevelManager.has_gun:
-		obj_label.text = "✓ Key Card found!\n2. Pick up the Gun\n3. Kill all enemies (0/3)"
+		obj_label.text = "✓ Key Card found!\n2. Open the door, grab the Gun\n3. Shoot all enemies (0/3)"
 	else:
 		var k = LevelManager.enemies_killed
-		obj_label.text = "✓ Key Card found!\n✓ Gun equipped!\n3. Kill all enemies (%d/3)" % k
+		obj_label.text = "✓ Key Card found!\n✓ Gun acquired!\n3. Shoot all enemies (%d/3)" % k
 
 func _on_movement_state_changed(state: String):
 	move_label.text = "Movement: " + state

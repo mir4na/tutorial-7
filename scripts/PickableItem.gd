@@ -24,7 +24,7 @@ func interact():
 		collected = InventoryManager.pickup("Gun")
 		if collected: LevelManager.obtain_gun()
 	elif is_key:
-		collected = InventoryManager.pickup("Key Card")
+		collected = InventoryManager.pickup(item_name)
 		if collected: LevelManager.collect_key_l2()
 	else:
 		collected = InventoryManager.pickup(item_name)

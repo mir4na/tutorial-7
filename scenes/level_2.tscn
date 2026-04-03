@@ -6,10 +6,12 @@
 [ext_resource type="PackedScene" path="res://scenes/Enemy.tscn" id="4_enemy"]
 [ext_resource type="PackedScene" path="res://scenes/PickableItem.tscn" id="5_pickable"]
 [ext_resource type="PackedScene" uid="uid://b7cga8cfp1h0u" path="res://scenes/Door.tscn" id="6_door"]
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_l2"]
+[ext_resource type="Script" uid="uid://bckuvwfyalsak" path="res://scripts/Level2Initializer.gd" id="7_init"]
 
 [node name="Level2" type="Node3D" unique_id=2095233868]
+
+[node name="Initializer" type="Node" parent="." unique_id=360897603]
+script = ExtResource("7_init")
 
 [node name="World2" parent="." unique_id=1379854874 instance=ExtResource("2_world2")]
 
@@ -22,9 +24,9 @@ item_name = "Key Card L2"
 is_key = true
 
 [node name="GunRoomDoor" parent="." unique_id=2013698728 instance=ExtResource("6_door")]
-transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0218358, -23.942198)
+transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0218358, -23.902557)
 open_on_key = true
-required_key = "Key Card"
+required_key = "Key Card L2"
 
 [node name="GunPickup" parent="." unique_id=1871466184 instance=ExtResource("5_pickable")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8687923, -30)
@@ -32,15 +34,12 @@ item_name = "Gun"
 is_gun = true
 
 [node name="Enemy1" parent="." unique_id=1256320925 instance=ExtResource("4_enemy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.434675, 1, -24.096846)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.434675, -1.8788843, -24.096846)
 
 [node name="Enemy2" parent="." unique_id=856376764 instance=ExtResource("4_enemy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.602835, 1, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.602835, -2.412786, -8)
 
 [node name="Enemy3" parent="." unique_id=717453149 instance=ExtResource("4_enemy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.37518, 1, 13.797018)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.37518, -2.6374645, 13.797018)
 
 [node name="HUD" parent="." unique_id=202785525 instance=ExtResource("3_hud")]
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1226544977]
-navigation_mesh = SubResource("NavigationMesh_l2")
