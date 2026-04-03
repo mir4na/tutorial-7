@@ -20,13 +20,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8)
 
 [node name="KeyCardL2" parent="." unique_id=839022048 instance=ExtResource("5_pickable")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -2.8980384, -2)
-item_name = "Key Card L2"
+item_name = "Key Card"
 is_key = true
 
 [node name="GunRoomDoor" parent="." unique_id=2013698728 instance=ExtResource("6_door")]
 transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0218358, -23.902557)
 open_on_key = true
-required_key = "Key Card L2"
+required_key = "Key Card"
 
 [node name="GunPickup" parent="." unique_id=1871466184 instance=ExtResource("5_pickable")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8687923, -30)

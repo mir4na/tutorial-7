@@ -17,6 +17,9 @@ var roam_direction: Vector3 = Vector3.ZERO
 var bullet_scene = preload("res://scenes/EnemyBullet.tscn")
 var gravity: float = 9.8
 
+var max_hp: int = 3
+var hp: int = 3
+
 func _ready():
 	add_to_group("enemy")
 	player = get_tree().get_first_node_in_group("player")
@@ -94,6 +97,16 @@ func _fire_at_player():
 	b.global_position = global_position + Vector3(0, 1.0, 0)
 	var dir = (player.global_position + Vector3(0, 1.0, 0) - b.global_position).normalized()
 	b.direction = dir
+
+func take_damage(amount: int):
+	hp -= amount
+	var ratio = float(hp) / float(max_hp)
+	if has_node("HPBarCenter/HPFg"):
+		var fg = get_node("HPBarCenter/HPFg")
+		fg.scale.x = max(0.01, ratio)
+	
+	if hp <= 0:
+		die()
 
 func die():
 	LevelManager.enemy_died()

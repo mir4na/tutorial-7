@@ -10,6 +10,26 @@ material = SubResource("Mat_Enemy")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape_enemy"]
 
+[sub_resource type="StandardMaterial3D" id="Mat_HP_BG"]
+albedo_color = Color(1, 0, 0, 1)
+shading_mode = 0
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="Mesh_HP_BG"]
+material = SubResource("Mat_HP_BG")
+size = Vector2(1.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="Mat_HP_FG"]
+albedo_color = Color(0, 1, 0, 1)
+shading_mode = 0
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="Mesh_HP_FG"]
+material = SubResource("Mat_HP_FG")
+size = Vector2(1.2, 0.2)
+
 [node name="Enemy" type="CharacterBody3D"]
 script = ExtResource("1_enemy")
 
@@ -26,6 +46,16 @@ one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="HPBarCenter" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
+
+[node name="HPBg" type="MeshInstance3D" parent="HPBarCenter"]
+mesh = SubResource("Mesh_HP_BG")
+
+[node name="HPFg" type="MeshInstance3D" parent="HPBarCenter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.02)
+mesh = SubResource("Mesh_HP_FG")
 
 [connection signal="timeout" from="RoamTimer" to="." method="_on_roam_timer_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
