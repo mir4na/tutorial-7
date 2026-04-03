@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var prompt_label: Label = $PromptLabel
+@onready var crosshair: Label = $Crosshair
 @onready var slot_1: PanelContainer = $InventoryBar/Slot1
 @onready var slot_2: PanelContainer = $InventoryBar/Slot2
 @onready var slot_3: PanelContainer = $InventoryBar/Slot3
@@ -49,3 +50,5 @@ func _update_inventory_ui():
 	slot_1.add_theme_stylebox_override("panel", selected_style if sel == 0 else normal_style)
 	slot_2.add_theme_stylebox_override("panel", selected_style if sel == 1 else normal_style)
 	slot_3.add_theme_stylebox_override("panel", selected_style if sel == 2 else normal_style)
+
+	crosshair.visible = slots[sel] == "Gun"

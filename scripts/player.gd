@@ -111,13 +111,8 @@ func _unhandled_input(event):
 			_shoot()
 
 func _shoot():
-	var space_state = get_world_3d().direct_space_state
-	# Cast from camera center straight forward
-	var from = camera.global_position
-	var to = from - camera.global_transform.basis.z * 100.0
-	var query = PhysicsRayQueryParameters3D.create(from, to)
-	var result = space_state.intersect_ray(query)
-	
-	if result and result.collider.is_in_group("enemy"):
-		if result.collider.has_method("die"):
-			result.collider.die()
+	var bullet_scene = load("res://scenes/Bullet.tscn")
+	var b = bullet_scene.instantiate()
+	get_tree().root.add_child(b)
+	b.global_position = camera.global_position
+	b.direction = -camera.global_transform.basis.z

@@ -3,6 +3,7 @@ extends Node
 var tasks_completed: int = 0
 var has_gun: bool = false
 var enemies_killed: int = 0
+var key_collected_l2: bool = false
 
 signal task_completed(task_index: int)
 signal all_tasks_complete
@@ -24,14 +25,19 @@ func reset():
 	tasks_completed = 0
 	has_gun = false
 	enemies_killed = 0
+	key_collected_l2 = false
 	emit_signal("ui_updated")
 
 func obtain_gun():
 	has_gun = true
 	emit_signal("ui_updated")
 
+func collect_key_l2():
+	key_collected_l2 = true
+	emit_signal("ui_updated")
+
 func enemy_died():
 	enemies_killed += 1
 	emit_signal("ui_updated")
 	if enemies_killed >= 3:
-		get_tree().change_scene_to_file("res://scenes/level_2_win.tscn")
+		get_tree().change_scene_to_file.call_deferred("res://scenes/level_2_win.tscn")

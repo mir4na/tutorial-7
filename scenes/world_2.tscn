@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://cvhwmscd1pou4"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_Wall"]
+albedo_color = Color(0.22, 0.22, 0.25, 1)
+
+[sub_resource type="StandardMaterial3D" id="Mat_Floor"]
+albedo_color = Color(0.1, 0.1, 0.12, 1)
+
+[sub_resource type="StandardMaterial3D" id="Mat_GunRoom"]
+albedo_color = Color(0.18, 0.1, 0.1, 1)
+
+[node name="World2" type="Node3D" unique_id=1223945155]
+
+[node name="RoomCombiner" type="CSGCombiner3D" parent="." unique_id=736110007]
+use_collision = true
+
+[node name="OuterBlock" type="CSGBox3D" parent="RoomCombiner" unique_id=1753297360]
+size = Vector3(70, 10, 70)
+material = SubResource("Mat_Wall")
+
+[node name="SpawnRoomAir" type="CSGBox3D" parent="RoomCombiner" unique_id=2062612114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 8)
+operation = 2
+size = Vector3(16, 8, 14)
+material = SubResource("Mat_Floor")
+
+[node name="MainHallAir" type="CSGBox3D" parent="RoomCombiner" unique_id=28970178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -6)
+operation = 2
+size = Vector3(26, 8, 20)
+material = SubResource("Mat_Floor")
+
+[node name="NorthCorridorAir" type="CSGBox3D" parent="RoomCombiner" unique_id=1704613280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -19.372398)
+operation = 2
+size = Vector3(6, 8, 9.421875)
+material = SubResource("Mat_Floor")
+
+[node name="WestWingAir" type="CSGBox3D" parent="RoomCombiner" unique_id=984904550]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.540283, 1, -13.559814)
+operation = 2
+size = Vector3(10.919434, 8, 33.11963)
+material = SubResource("Mat_Floor")
+
+[node name="EastWingAir" type="CSGBox3D" parent="RoomCombiner" unique_id=380212964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.591064, 1, 3.0991821)
+operation = 2
+size = Vector3(19.182129, 8, 36.198364)
+material = SubResource("Mat_Floor")
+
+[node name="GunRoomAir" type="CSGBox3D" parent="RoomCombiner" unique_id=1185873266]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -29.435791)
+operation = 2
+size = Vector3(14, 8, 10.871582)
+material = SubResource("Mat_GunRoom")
+
+[node name="Pillar1" type="CSGBox3D" parent="RoomCombiner" unique_id=681455008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, -3)
+size = Vector3(1.5, 8, 1.5)
+material = SubResource("Mat_Wall")
+
+[node name="Pillar2" type="CSGBox3D" parent="RoomCombiner" unique_id=684546854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -3)
+size = Vector3(1.5, 8, 1.5)
+material = SubResource("Mat_Wall")
+
+[node name="Pillar3" type="CSGBox3D" parent="RoomCombiner" unique_id=351022664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, -10)
+size = Vector3(1.5, 8, 1.5)
+material = SubResource("Mat_Wall")
+
+[node name="Pillar4" type="CSGBox3D" parent="RoomCombiner" unique_id=976357447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.95784, 1, -8.16802)
+size = Vector3(1.5, 8, 5.9453125)
+material = SubResource("Mat_Wall")
+
+[node name="DividerA" type="CSGBox3D" parent="RoomCombiner" unique_id=892447529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 4.245699)
+size = Vector3(6, 8, 0.5)
+material = SubResource("Mat_Wall")
+
+[node name="DividerB" type="CSGBox3D" parent="RoomCombiner" unique_id=382778542]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 4.276973)
+size = Vector3(4, 8, 0.5)
+material = SubResource("Mat_Wall")
+
+[node name="Pillar5" type="CSGBox3D" parent="RoomCombiner" unique_id=520354182]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.070858, 1, 5.1798115)
+size = Vector3(11.032227, 8, 1.5)
+material = SubResource("Mat_Wall")
+
+[node name="Pillar6" type="CSGBox3D" parent="RoomCombiner" unique_id=1316510352]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.786896, 1, -9.761279)
+size = Vector3(9.414551, 8, 1.5)
+material = SubResource("Mat_Wall")
+
+[node name="Pillar7" type="CSGBox3D" parent="RoomCombiner" unique_id=1379673221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.116646, 1, 13.436653)
+size = Vector3(1.5, 8, 1.5)
+material = SubResource("Mat_Wall")
+
+[node name="MainLight" type="OmniLight3D" parent="." unique_id=286752812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+light_color = Color(1, 0.4, 0.1, 1)
+light_energy = 6.0
+omni_range = 28.0
+
+[node name="WestLight" type="OmniLight3D" parent="." unique_id=397659641]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 6, -6)
+light_color = Color(1, 0.35, 0.1, 1)
+light_energy = 4.0
+omni_range = 15.0
+
+[node name="EastLight" type="OmniLight3D" parent="." unique_id=1445920022]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 6, -6)
+light_color = Color(1, 0.35, 0.1, 1)
+light_energy = 4.0
+omni_range = 15.0
+
+[node name="GunRoomLight" type="OmniLight3D" parent="." unique_id=542691780]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -30)
+light_color = Color(1, 0.1, 0.1, 1)
+light_energy = 5.0
+omni_range = 18.0
+
+[node name="SpawnLight" type="OmniLight3D" parent="." unique_id=1523089871]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 8)
+light_color = Color(0.6, 0.7, 1, 1)
+light_energy = 3.0
+omni_range = 16.0

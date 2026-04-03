@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://mainmenu_tscn"]
+[gd_scene format=3 uid="uid://cnl5opfq2bxvh"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_menu"]
+[ext_resource type="Script" uid="uid://dxbdahhu2gmga" path="res://scripts/main_menu.gd" id="1_menu"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=1025930674]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_menu")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=448015249]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.12, 0.12, 0.15, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1232984636]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -35,18 +35,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1189025088]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "CSUI Generic FPS"
+text = "Tutorial 7 3D Game"
 horizontal_alignment = 1
 
-[node name="PlayButton" type="Button" parent="VBoxContainer"]
+[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=316493256]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Play Game"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=832488771]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Quit"
